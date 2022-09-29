@@ -19,15 +19,18 @@ variable "push_subscriptions" {
   description = "The list of the push subscriptions"
   default     = []
 }
-
 variable "pull_subscriptions" {
-  type = list(object({
-    subscription_details    = map(string)
-    subscription_labels     = map(string)
-  }))
-  description = "The list of the pull subscriptions and it's labels."
+  type        = list(map(string))
+  description = "The list of the pull subscriptions"
   default     = []
 }
+
+variable "subscription_labels" {
+  type        = map(string)
+  description = "A map of labels to assign to every Pub/Sub subscription"
+  default     = {}
+}
+
 
 variable "message_storage_policy" {
   type        = map(any)
